@@ -17,6 +17,7 @@ function RenderCampsite({campsite}) {
     );
 }
 
+const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
 
@@ -38,6 +39,10 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
+        if (values.rating === undefined) {
+            alert('Please Enter A Rating.')
+            return;
+        }
         console.log("Current state is: " + JSON.stringify(values));
         alert("Current state is: " + JSON.stringify(values));
         this.toggleModal();
@@ -56,6 +61,7 @@ class CommentForm extends Component {
                                 <Control.select
                                     model=".rating" name="rating"
                                     className="form-control">
+                                    <option>Select</option>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
