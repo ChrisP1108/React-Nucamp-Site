@@ -40,7 +40,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         if (values.rating === undefined) {
-            alert('Please Enter A Rating.')
+            alert('Please Select A Rating.')
             return;
         }
         console.log("Current state is: " + JSON.stringify(values));
