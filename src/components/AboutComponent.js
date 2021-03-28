@@ -23,32 +23,31 @@ function RenderPartner({ partner }) {
 }
 
 function PartnerList(props) {
-
+    const partners = props.partners.map(partner => {
+        return (
+            <div className="col mt-4">
+                <Media list>
+                    <Fade key={partner.id}>
+                        <Media tag="li">
+                            <Stagger>
+                                <RenderPartner partner={partner} />
+                            </Stagger>
+                        </Media>
+                    </Fade>
+                </Media> 
+            </div>
+        )
+    });
     if (props.partnersLoading) {
         return <Loading />;
     }
     if (props.partnersErrMess) {
         return (
             <div className="col">
-                <h4>{this.props.errMess}</h4>
+                <h4>{props.partnersErrMess}</h4>
             </div>
         )
     }
-    return (
-        <div className="col mt-4">
-            <Media list>
-                const partners = props.partners.map(partner => {
-                    <Fade key={props.partner.id}>
-                        <Media tag="li">
-                            <Stagger>
-                                <RenderPartner partner={props.partner} />
-                            </Stagger>
-                        </Media>
-                    </Fade>
-                });
-            </Media> 
-        </div>
-    )
 }
 
 function About(props) {
