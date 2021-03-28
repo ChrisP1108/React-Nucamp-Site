@@ -23,21 +23,21 @@ function RenderPartner({ partner }) {
 }
 
 function PartnerList(props) {
-    if (props.partnersLoading) {
+
+    if (props.partners.isLoading) {
         return <Loading />;
     }
-    if (props.partnersErrMess) {
+    if (props.partners.errMess) {
         return (
             <div className="col">
-                <h4>{props.partnersErrMess}</h4>
+                <h4>{props.partners.errMess}</h4>
             </div>
         )
     }
     const partners = props.partners.partners.map(partner => {
-        console.log(partner);
         return (
             <div className="col mt-4">
-                <Fade key={partner.id}>
+                <Fade in key={partner.id}>
                     <Media tag="li">
                         <RenderPartner partner={partner} />
                     </Media>
@@ -49,7 +49,7 @@ function PartnerList(props) {
     return (
         <div className="col mt-4">
             <Media list>
-                <Stagger>
+                <Stagger in>
                     {partners}
                 </Stagger>
             </Media>
