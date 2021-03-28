@@ -23,21 +23,6 @@ function RenderPartner({ partner }) {
 }
 
 function PartnerList(props) {
-    const partners = props.partners.map(partner => {
-        return (
-            <div className="col mt-4">
-                <Media list>
-                    <Fade key={partner.id}>
-                        <Media tag="li">
-                            <Stagger>
-                                <RenderPartner partner={partner} />
-                            </Stagger>
-                        </Media>
-                    </Fade>
-                </Media> 
-            </div>
-        )
-    });
     if (props.partnersLoading) {
         return <Loading />;
     }
@@ -48,6 +33,28 @@ function PartnerList(props) {
             </div>
         )
     }
+    const partners = props.partners.partners.map(partner => {
+        console.log(partner);
+        return (
+            <div className="col mt-4">
+                <Fade key={partner.id}>
+                    <Media tag="li">
+                        <RenderPartner partner={partner} />
+                    </Media>
+                </Fade>
+            </div>
+        )
+    });
+
+    return (
+        <div className="col mt-4">
+            <Media list>
+                <Stagger>
+                    {partners}
+                </Stagger>
+            </Media>
+        </div>        
+    );
 }
 
 function About(props) {
